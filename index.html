@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nandhini | Athlete Portfolio</title>
+
+  <meta
+    name="description"
+    content="Nandhini's professional athletics portfolio — Running and Long Jump."
+  />
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #080808;
+      --bg2: #101010;
+      --card: #151515;
+      --text: #ffffff;
+      --muted: #a6a6a6;
+      --accent: #ff4d2e;
+      --accent2: #ff7a18;
+      --border: rgba(255,255,255,0.1);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 25px 50px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: var(--accent);
+      filter: blur(180px);
+      opacity: 0.13;
+      right: -200px;
+      top: 50px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 9vw, 110px);
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: -5px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero h2 {
+      margin-top: 25px;
+      font-size: 25px;
+      color: #ddd;
+      font-weight: 500;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      color: var(--muted);
+      max-width: 600px;
+      font-size: 17px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: var(--accent2);
+    }
+
+    .btn-outline {
+      border: 1px solid #444;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ATHLETE VISUAL */
+
+    .athlete-box {
+      height: 550px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(145deg, rgba(255,77,46,0.15), transparent 50%),
+        #111;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .athlete-box::before {
+      content: "ATHLETE";
+      position: absolute;
+      top: 40px;
+      right: -70px;
+      font-size: 100px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      transform: rotate(90deg);
+    }
+
+    .runner-icon {
+      font-size: 250px;
+      position: relative;
+      bottom: 30px;
+      filter: grayscale(1);
+    }
+
+    .hero-number {
+      position: absolute;
+      left: 25px;
+      bottom: 25px;
+      font-size: 80px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.08);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+      padding: 110px 25px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin-bottom: 60px;
+    }
+
+    .section-title small {
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1;
+      margin-top: 12px;
+      font-weight: 900;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin-top: 15px;
+      max-width: 650px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #bbb;
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding-left: 20px;
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .about-card {
+      background: var(--card);
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+
+    .about-card h3 {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+      color: #bbb;
+    }
+
+    .info-row strong {
+      color: white;
+    }
+
+    /* =========================
+       SPORTS
+    ========================== */
+
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .sport-card {
+      min-height: 350px;
+      padding: 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+
+    .sport-icon {
+      font-size: 60px;
+      margin-bottom: 25px;
+    }
+
+    .sport-card h3 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .sport-card p {
+      color: var(--muted);
+      max-width: 500px;
+    }
+
+    .sport-number {
+      position: absolute;
+      right: 20px;
+      bottom: -25px;
+      font-size: 150px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats {
+      background: #101010;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat {
+      padding: 35px 25px;
+      border: 1px solid var(--border);
+      background: #141414;
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 45px;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .stat p {
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    /* =========================
+       TRAINING
+    ========================== */
+
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .training-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    .training-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .training-card span {
+      font-size: 35px;
+    }
+
+    .training-card h3 {
+      margin: 20px 0 10px;
+      font-size: 22px;
+    }
+
+    .training-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ACHIEVEMENTS
+    ========================== */
+
+    .achievement-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .achievement {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      align-items: center;
+      gap: 25px;
+      padding: 25px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .medal {
+      font-size: 45px;
+    }
+
+    .achievement h3 {
+      margin-bottom: 5px;
+    }
+
+    .achievement p {
+      color: var(--muted);
+    }
+
+    .year {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* =========================
+       GOALS
+    ========================== */
+
+    .goals {
+      background:
+        linear-gradient(120deg, rgba(255,77,46,0.1), transparent),
+        #101010;
+    }
+
+    .goal-box {
+      border: 1px solid var(--border);
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .goal-box h3 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .goal-box p {
+      color: var(--muted);
+    }
+
+    .goal-list {
+      list-style: none;
+    }
+
+    .goal-list li {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+      color: #ddd;
+    }
+
+    .goal-list li::before {
+      content: "→";
+      color: var(--accent);
+      margin-right: 12px;
+    }
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery-note {
+      background: #151515;
+      border: 1px dashed #444;
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .gallery-note strong {
+      display: block;
+      color: white;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact-box {
+      background: var(--accent);
+      padding: 60px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(35px, 5vw, 60px);
+      line-height: 1;
+    }
+
+    .contact-box p {
+      margin-top: 15px;
+      max-width: 600px;
+    }
+
+    .contact-btn {
+      background: white;
+      color: #111;
+      padding: 15px 25px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 35px 25px;
+      border-top: 1px solid var(--border);
+      color: #777;
+      text-align: center;
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    /* =========================
+       SCROLL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #0b0b0b;
+        flex-direction: column;
+        padding: 25px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-container,
+      .about-grid,
+      .goal-box {
+        grid-template-columns: 1fr;
+      }
+
+      .athlete-box {
+        height: 450px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .training-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .sports-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid,
+      .training-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .achievement {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .year {
+        grid-column: 2;
+      }
+
+      .goal-box,
+      .contact-box {
+        padding: 30px;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header>
+    <nav>
+
+      <a href="#home" class="logo">
+        NANDHINI<span>.</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#sports">Athletics</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-btn" id="menuBtn">
+        ☰
+      </div>
+
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-container">
+
+      <div class="hero-content reveal">
+
+        <span class="tag">
+          ATHLETE • RUNNER • LONG JUMP
+        </span>
+
+        <h1>
+          NANDHINI<span>.</span>
+        </h1>
+
+        <h2>
+          Speed. Strength. Discipline. Distance.
+        </h2>
+
+        <p>
+          I am passionate about athletics, especially running and
+          long jump. Every training session is a step toward becoming
+          faster, stronger and better.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-primary">
+            Explore My Journey
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+            Contact Me
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="athlete-box reveal">
+
+        <!-- You can replace this emoji with your own athlete photo -->
+        <div class="runner-icon">
+          🏃‍♀️
+        </div>
+
+        <div class="hero-number">
+          01
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+        <small>01 — ABOUT ME</small>
+
+        <h2>
+          BUILT BY<br>
+          DISCIPLINE.
+        </h2>
+
+        <p>
+          A little about my journey, mindset and passion for athletics.
+        </p>
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="about-text reveal">
+
+          <p>
+            Hello, I'm <strong>Nandhini</strong>.
+          </p>
+
+          <p>
+            Athletics is more than just a sport for me. Running teaches
+            me speed, endurance and consistency, while long jump teaches
+            me power, technique and confidence.
+          </p>
+
+          <p>
+            I believe that progress comes from showing up every day,
+            working hard and staying focused on the goal.
+          </p>
+
+          <div class="quote">
+            "Train with purpose. Compete with confidence."
+          </div>
+
+        </div>
+
+
+        <div class="about-card reveal">
+
+          <h3>Athlete Profile</h3>
+
+          <div class="info-row">
+            <span>Name</span>
+            <strong>Nandhini</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Primary Sport</span>
+            <strong>Athletics</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Specialization</span>
+            <strong>Running & Long Jump</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Focus</span>
+            <strong>Performance</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Mindset</span>
+            <strong>Never Give Up</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SPORTS
+  ========================== -->
+
+  <section id="sports">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>02 — ATHLETICS</small>
+
+        <h2>
+          MY SPORTS.
+        </h2>
+
+        <p>
+          The disciplines that challenge me to become a better athlete.
+        </p>
+
+      </div>
+
+
+      <div class="sports-grid">
+
+        <div class="sport-card reveal">
+
+          <div class="sport-icon">
+            🏃‍♀️
+          </div>
+
+          <h3>Running</h3>
+
+          <p>
+            Building speed, endurance and consistency through regular
+            sprint training, running drills and conditioning.
+          </p>
+
+          <div class="sport-number">
+            01
+          </div>
+
+        </div>
+
+
+        <div class="sport-card reveal">
+
+          <div class="sport-icon">
+            🦘
+          </div>
+
+          <h3>Long Jump</h3>
+
+          <p>
+            Developing explosive power, approach speed, take-off
+            technique and landing control.
+          </p>
+
+          <div class="sport-number">
+            02
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PERFORMANCE
+  ========================== -->
+
+  <section class="stats" id="performance">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>03 — PERFORMANCE</small>
+
+        <h2>
+          PERFORMANCE<br>
+          MATTERS.
+        </h2>
+
+        <p>
+          Replace the sample values below with your actual athletic
+          performance records.
+        </p>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat reveal">
+          <h3>--</h3>
+          <p>100M Personal Best</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>--</h3>
+          <p>Long Jump Best</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>--</h3>
+          <p>Competitions</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>--</h3>
+          <p>Training Days / Week</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TRAINING
+  ========================== -->
+
+  <section id="training">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>04 — TRAINING</small>
+
+        <h2>
+          TRAIN.<br>
+          IMPROVE.<br>
+          REPEAT.
+        </h2>
+
+        <p>
+          Every area of training plays a role in athletic performance.
+        </p>
+
+      </div>
+
+
+      <div class="training-grid">
+
+        <div class="training-card reveal">
+
+          <span>⚡</span>
+
+          <h3>Speed</h3>
+
+          <p>
+            Sprint drills and acceleration work to improve running speed.
+          </p>
+
+        </div>
+
+
+        <div class="training-card reveal">
+
+          <span>🦵</span>
+
+          <h3>Power</h3>
+
+          <p>
+            Explosive exercises to improve jumping and overall athletic power.
+          </p>
+
+        </div>
+
+
+        <div class="training-card reveal">
+
+          <span>🏋️</span>
+
+          <h3>Strength</h3>
+
+          <p>
+            Strength training to build stability, balance and performance.
+          </p>
+
+        </div>
+
+
+        <div class="training-card reveal">
+
+          <span>🧘</span>
+
+          <h3>Recovery</h3>
+
+          <p>
+            Rest, mobility and recovery to stay consistent and healthy.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ACHIEVEMENTS
+  ========================== -->
+
+  <section id="achievements">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>05 — ACHIEVEMENTS</small>
+
+        <h2>
+          MOMENTS<br>
+          THAT MATTER.
+        </h2>
+
+        <p>
+          Add your real medals, competitions, certificates and achievements here.
+        </p>
+
+      </div>
+
+
+      <div class="achievement-list">
+
+        <div class="achievement reveal">
+
+          <div class="medal">🥇</div>
+
+          <div>
+            <h3>Competition Achievement</h3>
+            <p>
+              Add your competition name and achievement here.
+            </p>
+          </div>
+
+          <div class="year">
+            20XX
+          </div>
+
+        </div>
+
+
+        <div class="achievement reveal">
+
+          <div class="medal">🥈</div>
+
+          <div>
+            <h3>Running Event</h3>
+            <p>
+              Add your running competition result here.
+            </p>
+          </div>
+
+          <div class="year">
+            20XX
+          </div>
+
+        </div>
+
+
+        <div class="achievement reveal">
+
+          <div class="medal">🏆</div>
+
+          <div>
+            <h3>Long Jump Competition</h3>
+            <p>
+              Add your long jump achievement here.
+            </p>
+          </div>
+
+          <div class="year">
+            20XX
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GOALS
+  ========================== -->
+
+  <section class="goals" id="goals">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>06 — FUTURE</small>
+
+        <h2>
+          THE NEXT<br>
+          GOAL.
+        </h2>
+
+      </div>
+
+
+      <div class="goal-box reveal">
+
+        <div>
+
+          <h3>
+            DREAM BIG.
+          </h3>
+
+          <p>
+            My goal is to continuously improve my athletic performance,
+            compete at higher levels and make every training session count.
+          </p>
+
+        </div>
+
+
+        <ul class="goal-list">
+
+          <li>Improve sprint performance</li>
+
+          <li>Increase long jump distance</li>
+
+          <li>Compete in more athletic events</li>
+
+          <li>Build strength and speed</li>
+
+          <li>Represent my team with confidence</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALLERY
+  ========================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <small>07 — GALLERY</small>
+
+        <h2>
+          MY JOURNEY<br>
+          IN MOTION.
+        </h2>
+
+      </div>
+
+
+      <div class="gallery-note reveal">
+
+        <strong>📸 Add Your Sports Photos</strong>
+
+        Replace this section with your running,
+        long jump, competition and training photos.
+
+        <br><br>
+
+        You can add images using:
+
+        <br>
+
+        <code>
+          &lt;img src="your-photo.jpg"&gt;
+        </code>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box reveal">
+
+        <div>
+
+          <h2>
+            LET'S<br>
+            CONNECT.
+          </h2>
+
+          <p>
+            Interested in athletics, sports or collaboration?
+            Feel free to get in touch.
+          </p>
+
+        </div>
+
+        <!-- Change the email address -->
+        <a
+          href="mailto:yourmail@example.com"
+          class="contact-btn"
+        >
+          CONTACT ME →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+      © <span id="year"></span>
+      Nandhini. All Rights Reserved.
+    </p>
+
+    <p>
+      Runner • Long Jump Athlete • Dreamer
+    </p>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* Mobile Navigation */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+
+    /* Close mobile menu after clicking */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+
+    });
+
+
+    /* Current Year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Scroll Reveal Animation */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+  </script>
+
+</body>
+</html>
